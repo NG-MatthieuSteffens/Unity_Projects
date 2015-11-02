@@ -280,7 +280,7 @@ public class LivingBeing : MonoBehaviour
 	bool IsTargetVisible()
 	{
 		RaycastHit Hit;
-		Vector3 tGunPos = m_pActiveWeapon.transform.FindChild("Handle").FindChild("Gun").position;
+		Vector3 tGunPos = m_pActiveWeapon.GunPosition;
 
 		bool bIsVisible = false;
 
