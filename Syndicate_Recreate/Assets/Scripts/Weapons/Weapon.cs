@@ -9,28 +9,42 @@ abstract public class Weapon : MonoBehaviour
 	protected float m_fAttackRange = 20.0f;
 	[SerializeField]
 	protected float m_fFireSpeed = 1.0f;
-	[SerializeField]
-	protected float m_fDefaultDamages = 2.0f;
-	
-	#endregion
-	
-	#region Variables (private)
+    [SerializeField]
+    protected float m_fDefaultDamages = 2.0f;
+    [SerializeField]
+    protected Animation m_pShootAnimation;
+    [SerializeField]
+    protected GameObject m_pGun;
+    #endregion
 
-	protected GameObject m_pWielder;
-	protected GameObject m_pHandle;
-	protected Animation m_pShootAnimation;
-	protected GameObject m_pGun;
+    #region Variables (private)
+
+    protected GameObject m_pWielder;
 
 	protected float m_fLastAttackTime = 0.0f;
-	
-	#endregion
 
-	void Start()
+    #endregion
+
+    public GameObject Gun
+    {
+        get
+        {
+            return m_pGun;
+        }
+    }
+    public Vector3 GunPosition
+    {
+        get
+        {
+            return m_pGun.transform.position;
+        }
+    }
+
+
+
+    void Start()
 	{
 		m_pWielder = transform.parent.gameObject;
-		m_pHandle = transform.FindChild("Handle").gameObject;
-		m_pShootAnimation = m_pHandle.GetComponent<Animation>();
-		m_pGun = m_pHandle.transform.FindChild("Gun").gameObject;
 	}
 
 	public virtual void Shoot(Transform pTarget)
